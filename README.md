@@ -1,7 +1,7 @@
 taboverflow.vim
 =============
 
-![Screenshot](https://user-images.githubusercontent.com/1246394/85211715-c3870880-b300-11ea-8d68-26f446109537.png)
+![Screenshot](https://user-images.githubusercontent.com/1246394/85211803-98e97f80-b301-11ea-8e84-25a8041a9337.png)
 
 taboverflow.vim deals with the problem that the current tab becomes invisible in the tabline when there are too many tabs. Users can fully customize it by implementing a `label` function.
 
