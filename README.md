@@ -1,6 +1,8 @@
 taboverflow.vim
 =============
 
+![Screenshot](https://user-images.githubusercontent.com/1246394/85211715-c3870880-b300-11ea-8d68-26f446109537.png)
+
 taboverflow.vim deals with the problem that the current tab becomes invisible in the tabline when there are too many tabs. Users can fully customize it by implementing a `label` function.
 
 ## Installation
@@ -38,4 +40,4 @@ nmap <c-m-l> <Plug>TabMoveNext
 ## Related
 ------------
 - [taboo.vim](https://github.com/gcmt/taboo.vim)
-- [mg979/vim-xtabline](https://github.com/mg979/vim-xtabline)
+- [vim-xtabline](https://github.com/mg979/vim-xtabline)
