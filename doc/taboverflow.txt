@@ -1,0 +1,52 @@
+taboverflow*.txt* .
+                                                                   *taboverflow*
+===============================================================================
+CONTENTS				        *taboverflow-help-contents*
+
+Introduction    |taboverflow-introduction|
+Configurations  |taboverflow-configurations|
+Mappings        |taboverflow-mappings|
+
+==============================================================================
+INTRODUCTION				    *taboverflow-introduction*
+
+taboverflow.vim deals with the problem that the current tab becomes invisible in
+the tabline when there are too many tabs. Users can fully customize it by
+implementing a `label` function.
+
+==============================================================================
+Configurations				    *taboverflow-configurations*
+
+                                *g:TaboverflowLabel*
+g:TaboverflowLabel            |function| (default:'taboverflow#defaultlabelfn')
+This function returns the string for each tab. Note that when calculating the width of the returning string, the highlight pattern `%#[^#]*#` is ignored. Hence, users can use as many highlight as possible for each tab. Example:
+>
+
+    function s:MyTabLabel(n)
+        let buflist = tabpagebuflist(a:n)
+        let winnr = tabpagewinnr(a:n)
+        let res = '%#Search#'.taboverflow#unicode_num(a:n)
+        if a:n == tabpagenr()
+            let res .= '%#TabLineSel#'
+        else
+            let res .= '%#TabLine#'
+        endif
+        let res .= fnamemodify(bufname(buflist[winnr - 1]), ':t')
+        return res
+    endfunction
+    let g:TaboverflowLabel = function('s:MyTabLabel')
+
+==============================================================================
+Mappings                                *taboverflow-mappings*
+
+                                        *TabMovePrev*
+<Plug>TabMovePrev
+    Move tab left.
+
+                                        *TabMoveNext*
+<Plug>TabMoveNext
+    Move tab right.
+
+
+==============================================================================
+vim:tw=78:et:ft=help:norl:
