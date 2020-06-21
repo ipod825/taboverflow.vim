@@ -87,13 +87,21 @@ endfunction
 function! taboverflow#defaultlabelfn(n)
     let buflist = tabpagebuflist(a:n)
     let winnr = tabpagewinnr(a:n)
-    let res = '%#Search#'.taboverflow#unicode_num(a:n)
+    let res = '%#Visual#'.taboverflow#unicode_num(a:n)
     if a:n == tabpagenr()
         let res .= '%#TabLineSel#'
     else
         let res .= '%#TabLine#'
     endif
-    let res .= fnamemodify(bufname(buflist[winnr - 1]), ':t')
+    let bufnr = buflist[winnr - 1]
+    if getbufvar(bufnr, '&modified') == 1
+        let res .= '*'
+    endif
+    let bufname = fnamemodify(bufname(bufnr), ':t')
+    if empty(bufname)
+        let bufname = '[No Name]'
+    endif
+    let res .= bufname
     return res
 endfunction
 
